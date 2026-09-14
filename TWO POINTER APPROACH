@@ -1,26 +1,35 @@
-import java.util.Arrays;
+import java.util.*;
 
-public class TwoPointerDemo {
+public class Main {
 
-    public static void reverseArray(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
+    static int[] twoSum(int[] a, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        while (left < right) {
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
+        for (int i = 0; i < a.length; i++) {
+            int need = target - a[i];
 
-            left++;
-            right--;
+            if (map.containsKey(need))
+                return new int[]{map.get(need), i};
+
+            map.put(a[i], i);
         }
+
+        return new int[]{-1, -1};
     }
 
     public static void main(String[] args) {
-        int[] myArray = {1, 2, 3, 4, 5, 6};
-        
-        System.out.println("Original Array: " + Arrays.toString(myArray));
-        reverseArray(myArray);
-        System.out.println("Reversed Array: " + Arrays.toString(myArray));
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int target = sc.nextInt();
+
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++)
+            a[i] = sc.nextInt();
+
+        int[] ans = twoSum(a, target);
+
+        System.out.println(ans[0] + " " + ans[1]);
     }
 }
