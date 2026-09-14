@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main {
+
+    static int[] twoSum(int[] a, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < a.length; i++) {
+            int need = target - a[i];
+
+            if (map.containsKey(need))
+                return new int[]{map.get(need), i};
+
+            map.put(a[i], i);
+        }
+
+        return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int target = sc.nextInt();
+
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++)
+            a[i] = sc.nextInt();
+
+        int[] ans = twoSum(a, target);
+
+        System.out.println(ans[0] + " " + ans[1]);
+    }
+}
