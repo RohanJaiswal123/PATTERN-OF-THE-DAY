@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Main {
+
+    static boolean possible(int[] a, int h, int k) {
+        long time = 0;
+
+        for (int x : a)
+            time += (x + k - 1) / k;
+
+        return time <= h;
+    }
+
+    static int minSpeed(int[] a, int h) {
+        int l = 1, r = 0;
+
+        for (int x : a)
+            r = Math.max(r, x);
+
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+
+            if (possible(a, h, mid))
+                r = mid;
+            else
+                l = mid + 1;
+        }
+
+        return l;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int h = sc.nextInt();
+
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++)
+            a[i] = sc.nextInt();
+
+        System.out.println(minSpeed(a, h));
+    }
+}
