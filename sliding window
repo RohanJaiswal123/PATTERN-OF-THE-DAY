@@ -10,11 +10,9 @@ class Solution {
             s += A[j];
             while (s > k)
                 s -= A[i++];
-
             if (s == k)
                 best = Math.max(best, j - i + 1);
         }
-
         return best < 0 ? -1 : n - best;
     }
 }
