@@ -1,0 +1,10 @@
+B-TREE-INORDER-TRAVERSE(x)
+    i = 1
+    while i ≤ x.n
+        if x.leaf == false
+            B-TREE-INORDER-TRAVERSE(x.c[i])
+        print x.key[i]
+        i = i + 1
+    
+    if x.leaf == false
+        B-TREE-INORDER-TRAVERSE(x.c[i])
