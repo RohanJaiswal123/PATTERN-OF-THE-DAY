@@ -5,6 +5,5 @@ B-TREE-INORDER-TRAVERSE(x)
             B-TREE-INORDER-TRAVERSE(x.c[i])
         print x.key[i]
         i = i + 1
-    
     if x.leaf == false
         B-TREE-INORDER-TRAVERSE(x.c[i])
