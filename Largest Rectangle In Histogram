@@ -15,7 +15,6 @@ class Solution {
 
                 max = Math.max(max, height * width);
             }
-
             st.push(i);
         }
         return max;
